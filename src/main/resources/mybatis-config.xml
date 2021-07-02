@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties"/>
+
+    <typeAliases>
+        <typeAlias type="niit.start.pojo.User" alias="User"/>
+        <!--        package方式,可用@Alias注解定制别名，不指定则用类名的小写作别名-->
+        <!--        <package name="niit.start.pojo"/>-->
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${local.driver}"/>
+                <property name="url" value="${local.url}"/>
+                <property name="username" value="${local.username}"/>
+                <property name="password" value="${local.password}"/>
+            </dataSource>
+        </environment>
+        <environment id="vm">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${vm.driver}"/>
+                <property name="url" value="${vm.url}"/>
+                <property name="username" value="${vm.username}"/>
+                <property name="password" value="${vm.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="niit/start/mapper/UserMapper.xml"/>
+        <!--        接口和Mapper配置文件必须同名，并且在同一个包下，才能使用以下方式注册Mapper-->
+        <!--        <mapper class="niit.start.mapper.UserMapper"/>-->
+        <!--        <package name="niit.start.mapper"/>-->
+    </mappers>
+
+</configuration>
