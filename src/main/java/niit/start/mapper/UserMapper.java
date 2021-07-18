@@ -21,4 +21,6 @@ public interface UserMapper {
     int addUserWithMap(Map<String, Object> map);
 
     User getUserLike(String name);
+
+    List<User> getUserLimit(Map<String, Integer> map);
 }

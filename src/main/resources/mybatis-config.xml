@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
 
     <properties resource="db.properties"/>
 
+    <!--    <settings>-->
+    <!--        &lt;!&ndash;STDOUT_LOGGING为默认日志工厂&ndash;&gt;-->
+    <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    <!--    </settings>-->
+
     <typeAliases>
         <typeAlias type="niit.start.pojo.User" alias="User"/>
-        <!--        package方式,可用@Alias注解定制别名，不指定则用类名的小写作别名-->
+        <!--        package方式,对包中所有实体类应用别名，可用@Alias注解定制别名，不指定则用类名的小写作别名-->
         <!--        <package name="niit.start.pojo"/>-->
     </typeAliases>
 
