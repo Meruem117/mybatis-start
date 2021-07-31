@@ -1,6 +1,7 @@
 package niit.start.mapper;
 
 import niit.start.pojo.User;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -23,4 +24,7 @@ public interface UserMapper {
     User getUserLike(String name);
 
     List<User> getUserLimit(Map<String, Integer> map);
+
+    @Select("select * from user")
+    List<User> getUserWithAnnotation();
 }

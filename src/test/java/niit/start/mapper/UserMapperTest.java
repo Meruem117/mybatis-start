@@ -148,4 +148,17 @@ public class UserMapperTest {
     }
     // 还可以使用MyBatis分页插件PageHelper实现分页
     // https://pagehelper.github.io/
+
+    @Test
+    public void getUserWithAnnotationTest() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> userList = userMapper.getUserWithAnnotation();
+        for (User user : userList) {
+            System.out.println(user);
+        }
+
+        sqlSession.close();
+    }
 }
