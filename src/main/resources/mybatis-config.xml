@@ -42,6 +42,8 @@
     <mappers>
         <mapper resource="niit/start/mapper/UserMapper.xml"/>
         <mapper class="niit.start.mapper.UserAnnotationMapper"/>
+        <mapper resource="niit/start/mapper/StudentMapper.xml"/>
+        <mapper resource="niit/start/mapper/TeacherMapper.xml"/>
         <!--        接口和Mapper配置文件必须同名，并且在同一个包下，才能使用以下方式注册Mapper-->
         <!--        <mapper class="niit.start.mapper.UserMapper"/>-->
         <!--        <package name="niit.start.mapper"/>-->

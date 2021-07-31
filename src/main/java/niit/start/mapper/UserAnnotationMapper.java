@@ -7,7 +7,6 @@ import java.util.List;
 
 // 使用注解
 public interface UserAnnotationMapper {
-
     @Select("select * from user")
     List<User> getUserList();
 

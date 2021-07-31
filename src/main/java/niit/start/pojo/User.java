@@ -2,7 +2,7 @@ package niit.start.pojo;
 
 import org.apache.ibatis.type.Alias;
 
-//@Alias("user")
+// @Alias("user")
 public class User {
     private int id;
     private String name;

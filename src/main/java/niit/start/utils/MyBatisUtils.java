@@ -23,6 +23,8 @@ public class MyBatisUtils {
     }
 
     public static SqlSession getSqlSession() {
-        return sqlSessionFactory.openSession();
+        // 设置为true,自动commit
+        return sqlSessionFactory.openSession(true);
+        // return sqlSessionFactory.openSession();
     }
 }

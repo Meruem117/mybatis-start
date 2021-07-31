@@ -40,7 +40,7 @@ public class UserAnnotationMapperTest {
 
         mapper.addUser(new User(5, "DD", "123456"));
 
-        sqlSession.commit();
+        // sqlSession.commit();
         sqlSession.close();
     }
 
@@ -51,7 +51,7 @@ public class UserAnnotationMapperTest {
 
         mapper.updateUser(new User(5, "AA", "123456"));
 
-        sqlSession.commit();
+        // sqlSession.commit();
         sqlSession.close();
     }
 
@@ -62,7 +62,7 @@ public class UserAnnotationMapperTest {
 
         mapper.deleteUser(5);
 
-        sqlSession.commit();
+        // sqlSession.commit();
         sqlSession.close();
     }
 }
