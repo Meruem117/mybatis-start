@@ -21,9 +21,9 @@
     <resultMap id="UserMap" type="User">
         <!--        column对应数据库中字段，property对应实体类中的属性-->
         <!--        字段与属性名不一致可用此配置映射-->
-        <result column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="password" property="password"/>
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
     </resultMap>
     <select id="getUserById" parameterType="int" resultMap="UserMap">
             select * from user where id = #{id}
