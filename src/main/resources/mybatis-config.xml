@@ -8,14 +8,14 @@
     <properties resource="db.properties"/>
 
     <!--    <settings>-->
-    <!--        &lt;!&ndash;STDOUT_LOGGING为默认日志工厂&ndash;&gt;-->
+    <!--        &lt;!&ndash;            STDOUT_LOGGING为默认日志工厂&ndash;&gt;-->
     <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
     <!--    </settings>-->
 
     <typeAliases>
         <typeAlias type="niit.start.pojo.User" alias="User"/>
         <!--        package方式,对包中所有实体类应用别名，可用@Alias注解定制别名，不指定则用类名的小写作别名-->
-        <!--        <package name="niit.start.pojo"/>-->
+        <package name="niit.start.pojo.school"/>
     </typeAliases>
 
     <environments default="development">
@@ -41,12 +41,11 @@
 
     <mappers>
         <mapper resource="niit/start/mapper/UserMapper.xml"/>
+        <mapper resource="niit/start/mapper/UserMapMapper.xml"/>
         <mapper class="niit.start.mapper.UserAnnotationMapper"/>
-        <mapper resource="niit/start/mapper/StudentMapper.xml"/>
-        <mapper resource="niit/start/mapper/TeacherMapper.xml"/>
         <!--        接口和Mapper配置文件必须同名，并且在同一个包下，才能使用以下方式注册Mapper-->
         <!--        <mapper class="niit.start.mapper.UserMapper"/>-->
-        <!--        <package name="niit.start.mapper"/>-->
+        <package name="niit.start.mapper.school"/>
     </mappers>
 
 </configuration>

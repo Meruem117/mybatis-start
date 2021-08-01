@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="niit.start.mapper.UserMapMapper">
+
+    <select id="getUserWithMap" parameterType="map" resultType="User">
+        select * from user where id = #{user_id} and name = #{user_name}
+    </select>
+
+    <insert id="addUserWithMap" parameterType="map">
+        insert into user (id, name ,password) values (#{user_id}, #{user_name}, #{user_pwd})
+    </insert>
+
+    <select id="getUserLimit" parameterType="map" resultType="User">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
+
+    <!--        配置结果集映射-->
+    <resultMap id="UserMap" type="User">
+        <!--        column对应数据库中字段，property对应实体类中的属性-->
+        <!--        字段与属性名不一致可用此配置映射-->
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="getUserById" parameterType="int" resultMap="UserMap">
+            select * from user where id = #{id}
+    </select>
+
+</mapper>
