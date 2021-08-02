@@ -4,8 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="niit.start.mapper.BlogMapper">
 
-    <select id="getBlogList" resultType="niit.start.pojo.Blog">
+    <select id="getBlogList" resultType="Blog">
         select * from blog
+    </select>
+
+    <select id="addBlog" parameterType="Blog">
+        insert into blog (id, title, author, create_time, views)
+        values (#{id} ,#{title} ,#{author}, #{createTime}, #{views})
     </select>
 
 </mapper>

@@ -9,9 +9,10 @@ import java.util.Date;
  */
 @Data
 public class Blog {
-    private int id;
+    private String id;
     private String title;
     private String author;
+    // mybatis-config里settings配置映射，对应表格create_time字段
     private Date createTime;
     private int views;
 }

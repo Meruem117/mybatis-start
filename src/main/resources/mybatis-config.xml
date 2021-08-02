@@ -7,14 +7,17 @@
 
     <properties resource="db.properties"/>
 
-    <!--<settings>
-        &lt;!&ndash;STDOUT_LOGGING为默认日志工厂&ndash;&gt;
-        <setting name="logImpl" value="STDOUT_LOGGING"/>
-    </settings>-->
+    <settings>
+        <!--属性名与表格字段名不一致，将驼峰形式映射成下划线形式-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--STDOUT_LOGGING为默认日志工厂-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    </settings>
 
     <typeAliases>
         <typeAlias type="niit.start.pojo.User" alias="User"/>
-        <!--package方式,对包中所有实体类应用别名，可用@Alias注解定制别名，不指定则用类名的小写作别名-->
+        <typeAlias type="niit.start.pojo.Blog" alias="Blog"/>
+        <!--package方式,对包中所有实体类应用别名，可用@Alias注解定制别名，不指定则用类名的小写或除首字母小写作别名-->
         <package name="niit.start.pojo.school"/>
     </typeAliases>
 
@@ -44,8 +47,8 @@
         <mapper resource="niit/start/mapper/UserMapMapper.xml"/>
         <mapper class="niit.start.mapper.UserAnnotationMapper"/>
         <!--接口和Mapper配置文件必须同名，并且在同一个包下，才能使用以下方式注册Mapper-->
-        <package name="niit.start.mapper.school"/>
         <mapper class="niit.start.mapper.BlogMapper"/>
+        <package name="niit.start.mapper.school"/>
     </mappers>
 
 </configuration>

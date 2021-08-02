@@ -14,11 +14,11 @@ public interface UserAnnotationMapper {
     User getUserById(@Param("id") int id);
 
     @Insert("insert into user(id, name, password) values (#{id}, #{name}, #{password})")
-    int addUser(User user);
+    void addUser(User user);
 
     @Update("update user set name = #{name}, password = #{password} where id = #{id}")
-    int updateUser(User user);
+    void updateUser(User user);
 
     @Delete("delete from user where id = #{id}")
-    int deleteUser(@Param("id") int id);
+    void deleteUser(@Param("id") int id);
 }
