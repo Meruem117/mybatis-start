@@ -38,8 +38,7 @@ public class UserMapperTest {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-        int res = userMapper.addUser(new User(3, "Finch", "123456"));
-        System.out.println(res > 0 ? "insert succeed" : "insert fail");
+        userMapper.addUser(new User(3, "Finch", "123456"));
 
         sqlSession.commit();
         sqlSession.close();
@@ -50,8 +49,7 @@ public class UserMapperTest {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-        int res = userMapper.updateUser(new User(2, "Finch", "234567"));
-        System.out.println(res > 0 ? "update succeed" : "update fail");
+        userMapper.updateUser(new User(2, "Finch", "234567"));
 
         sqlSession.commit();
         sqlSession.close();
@@ -62,8 +60,7 @@ public class UserMapperTest {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-        int res = userMapper.deleteUser(3);
-        System.out.println(res > 0 ? "delete succeed" : "delete fail");
+        userMapper.deleteUser(3);
 
         sqlSession.commit();
         sqlSession.close();

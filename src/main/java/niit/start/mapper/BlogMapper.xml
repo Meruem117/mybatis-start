@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -12,5 +12,110 @@
         insert into blog (id, title, author, create_time, views)
         values (#{id} ,#{title} ,#{author}, #{createTime}, #{views})
     </select>
+
+    <select id="getBlogWithIf" parameterType="map" resultType="Blog">
+        select * from blog where author = 'JACK'
+        <if test="title != null">
+            and title = #{title}
+        </if>
+        <if test="views != null">
+            and views = #{views}
+        </if>
+    </select>
+
+    <select id="getBlogWithChoose" parameterType="map" resultType="Blog">
+        select * from blog where author = 'JACK'
+        <choose>
+            <when test="title != null">
+                and title like #{title}
+            </when>
+            <when test="views != null">
+                and views like #{views}
+            </when>
+            <otherwise>
+                and views > 100
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="getBlogWithWhere" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+            <if test="author != null">
+                author = #{author}
+            </if>
+            <if test="title != null">
+                and title = #{title}
+            </if>
+            <if test="views != null">
+                and views = #{views}
+            </if>
+        </where>
+    </select>
+
+    <!--与where等价-->
+    <!--<trim prefix="WHERE" prefixOverrides="AND |OR ">-->
+    <!--    ...-->
+    <!--</trim>-->
+
+    <!--与上一个相同作用-->
+    <select id="getBlogWithWhereInclude" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+            <include refid="if-author-title-views"/>
+        </where>
+    </select>
+    <!--sql片段-->
+    <sql id="if-author-title-views">
+        <if test="author != null">
+            author = #{author}
+        </if>
+        <if test="title != null">
+            and title = #{title}
+        </if>
+        <if test="views != null">
+            and views = #{views}
+        </if>
+    </sql>
+
+    <update id="updateBlogWithSet" parameterType="map">
+        update blog
+        <set>
+            <if test="author != null">
+                author = #{author},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="views != null">
+                views = #{views}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--与set等价-->
+    <!--<trim prefix="SET" suffixOverrides=",">-->
+    <!--    ...-->
+    <!--</trim>-->
+
+    <select id="getBlogWithForEach" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+            <foreach collection="authors" item="author" index="index" open="(" separator="or" close=")">
+                author = #{author}
+            </foreach>
+        </where>
+    </select>
+    <!--上下等价，查询语句不同，separator不同-->
+    <!--<select id="getBlogWithForEach" parameterType="map" resultType="Blog">-->
+    <!--    select * from blog-->
+    <!--    <where>-->
+    <!--        author in-->
+    <!--        <foreach collection="authors" item="author" index="index" open="(" separator="," close=")">-->
+    <!--            #{author}-->
+    <!--        </foreach>-->
+    <!--    </where>-->
+    <!--</select>-->
 
 </mapper>

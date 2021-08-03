@@ -36,8 +36,7 @@ public class UserMapMapperTest {
         map.put("user_name", "Cater");
         map.put("user_pwd", "345678");
 
-        int res = mapper.addUserWithMap(map);
-        System.out.println(res > 0 ? "insert succeed" : "insert fail");
+        mapper.addUserWithMap(map);
 
         sqlSession.commit();
         sqlSession.close();
