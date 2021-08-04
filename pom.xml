@@ -13,6 +13,7 @@
         <mybatis.version>3.5.7</mybatis.version>
         <mysql.version>8.0.23</mysql.version>
         <lombok.version>1.18.20</lombok.version>
+        <pagehelper.version>5.2.1</pagehelper.version>
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -21,6 +22,12 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
         </dependency>
 
         <dependency>
@@ -69,6 +76,16 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

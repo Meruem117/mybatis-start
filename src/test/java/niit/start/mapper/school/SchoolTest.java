@@ -1,4 +1,4 @@
-package niit.start.mapper;
+package niit.start.mapper.school;
 
 import niit.start.mapper.school.StudentMapper;
 import niit.start.mapper.school.TeacherMapper;

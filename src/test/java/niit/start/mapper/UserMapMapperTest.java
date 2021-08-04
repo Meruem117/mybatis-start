@@ -73,8 +73,6 @@ public class UserMapMapperTest {
 
         sqlSession.close();
     }
-    // 还可以使用MyBatis分页插件PageHelper实现分页
-    // https://pagehelper.github.io/
 
     @Test
     public void getUserByIdTest() {
