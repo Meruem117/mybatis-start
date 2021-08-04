@@ -2,8 +2,10 @@ package niit.start.pojo;
 
 import org.apache.ibatis.type.Alias;
 
-// @Alias("user")
-public class User {
+import java.io.Serializable;
+
+// @Alias("User")
+public class User implements Serializable {
     private int id;
     private String name;
     private String password;

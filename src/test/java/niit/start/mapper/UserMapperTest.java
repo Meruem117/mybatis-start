@@ -77,4 +77,17 @@ public class UserMapperTest {
         sqlSession.close();
     }
 
+    @Test
+    public void getUsersSQL() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> list = userMapper.getUsersSQL();
+        for (User user : list) {
+            System.out.println(user);
+        }
+
+        sqlSession.close();
+    }
+
 }

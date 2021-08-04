@@ -5,6 +5,15 @@
 
 <mapper namespace="niit.start.mapper.UserMapper">
 
+    <!--在当前xml中开启二级缓存-->
+    <!--<cache/> -->
+    <!--详细配置-->
+    <cache eviction="FIFO"
+           flushInterval="60000"
+           size="512"
+           readOnly="false"/>
+    <!--readOnly设置为false需要开启序列化-->
+
     <select id="getUserList" resultType="niit.start.pojo.User">
         select * from user
     </select>
@@ -28,5 +37,24 @@
     <select id="getUserLike" resultType="User">
         select * from user where name like "%"#{name}"%"
     </select>
+
+    <select id="getUsersSQL" resultType="User">
+        select
+        <include refid="userColumns">
+            <property name="c1" value="id"/>
+            <property name="c2" value="name"/>
+            <property name="c3" value="password"/>
+        </include>
+        <include refid="someInclude">
+            <property name="someTable" value="tableName"/>
+            <property name="table" value="user"/>
+        </include>
+    </select>
+    <sql id="userColumns"> ${c1}, ${c2}, ${c3} </sql>
+    <sql id="someInclude">
+        from
+        <include refid="${someTable}"/>
+    </sql>
+    <sql id="tableName">${table}</sql>
 
 </mapper>

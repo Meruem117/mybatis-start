@@ -11,7 +11,9 @@
         <!--属性名与表格字段名不一致，将驼峰形式映射成下划线形式-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!--STDOUT_LOGGING为默认日志工厂-->
-        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <typeAliases>

@@ -17,4 +17,6 @@ public interface UserMapper {
 
     User getUserLike(String name);
 
+    List<User> getUsersSQL();
+
 }
